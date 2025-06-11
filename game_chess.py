@@ -34,7 +34,7 @@ class Game():
     def __init__(self):
         pygame.init()
         self.screen = pygame.display.set_mode((SCREEN_SIZE, SCREEN_SIZE))
-        # self.clock = pygame.time.Clock()
+        self.clock = pygame.time.Clock()
         self.font = pygame.font.SysFont("Arial", 45)  # Menu options font
         self.font2 = pygame.font.SysFont("Arial Black", 70)  # Title font
         board = Board(self.screen)
@@ -66,7 +66,7 @@ class Game():
         while running:
             self.screen.blit(gradient_rect, (0, 0))
 
-            # Add a decorative border
+            # Decorative border
             border_width = 10
             pygame.draw.rect(self.screen, (200, 160, 0), (border_width, border_width, 
                             SCREEN_SIZE - 2*border_width, SCREEN_SIZE - 2*border_width), 
@@ -80,10 +80,10 @@ class Game():
             )
             self.screen.blit(title, title_center)
 
-            # Get mouse position for hover effect
+            # Mouse  hover effect
             mouse_pos = pygame.mouse.get_pos()
             
-            # Handle menu options with hover effect
+            # Menu options with hover effect
             for opt in menu_options:
                 y_pos = SCREEN_SIZE/2 + opt["y_offset"]
                 

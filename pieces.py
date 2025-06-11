@@ -1,5 +1,3 @@
-
-
 import pygame
 import os.path
 from copy import deepcopy
@@ -149,25 +147,25 @@ class Pieces():
                         CLR = GRIS
                     if self.ar[i][j] == '..' or self.ar[i][j] == '...':
                         pygame.draw.rect(
-                                self.screen, CLR,
-                                (PIECE_SIZE*(j+1), PIECE_SIZE*(i+1), PIECE_SIZE, PIECE_SIZE))
+                            self.screen, CLR,
+                            cal_rect(1, i+1, j+1) + (PIECE_SIZE, PIECE_SIZE))
                     elif self.ar[i][j][0] == '.':
                         pygame.draw.rect(
-                                self.screen, CLR,
-                                (PIECE_SIZE*(j+1), PIECE_SIZE*(i+1), PIECE_SIZE, PIECE_SIZE))
-                        self.P[self.ar[i][j][1:]].rect = cal_rect(1, i+1,j+1)
-                        self.screen.blit(self.P[self.ar[i][j][1:]].surf, cal_rect(1, i+1,j+1))
+                            self.screen, CLR,
+                            cal_rect(1, i+1, j+1) + (PIECE_SIZE, PIECE_SIZE))
+                        self.P[self.ar[i][j][1:]].rect = cal_rect(1, i+1, j+1)
+                        self.screen.blit(self.P[self.ar[i][j][1:]].surf, cal_rect(1, i+1, j+1))
                     else:
-                        self.P[self.ar[i][j]].rect = cal_rect(1, i+1,j+1)
-                        self.screen.blit(self.P[self.ar[i][j]].surf, cal_rect(1, i+1,j+1))
+                        self.P[self.ar[i][j]].rect = cal_rect(1, i+1, j+1)
+                        self.screen.blit(self.P[self.ar[i][j]].surf, cal_rect(1, i+1, j+1))
 
     def draw_pieces_upgrade(self, pos):
         for i in range(8):
             for j in range(8):
                 if pos != () and i == pos[0][0]-1 and j == pos[0][1]-1:
                     pygame.draw.rect(
-                            self.screen, RED_B,
-                            (PIECE_SIZE*(j+1), PIECE_SIZE*(i+1), PIECE_SIZE, PIECE_SIZE))
+                        self.screen, RED_B,
+                        cal_rect(1, i+1, j+1) + (PIECE_SIZE, PIECE_SIZE))
                 if self.ar[i][j] != '  ':
                     if (i + j) % 2 == 0:
                         CLR = GRIS_BRIGHT
@@ -175,21 +173,17 @@ class Pieces():
                         CLR = GRIS
                     if self.ar[i][j] == '..' or self.ar[i][j] == '...':
                         pygame.draw.rect(
-                                self.screen, CLR,
-                                (PIECE_SIZE*(j+1), PIECE_SIZE*(i+1), PIECE_SIZE, PIECE_SIZE))
+                            self.screen, CLR,
+                            cal_rect(1, i+1, j+1) + (PIECE_SIZE, PIECE_SIZE))
                     elif self.ar[i][j][0] == '.':
                         pygame.draw.rect(
-                                self.screen, CLR,
-                                (PIECE_SIZE*(j+1), PIECE_SIZE*(i+1), PIECE_SIZE, PIECE_SIZE))
-                        self.P[self.ar[i][j][1:]].rect = cal_rect(1, i+1,j+1)
-                        self.screen.blit(self.P[self.ar[i][j][1:]].surf, cal_rect(1, i+1,j+1))
+                            self.screen, CLR,
+                            cal_rect(1, i+1, j+1) + (PIECE_SIZE, PIECE_SIZE))
+                        self.P[self.ar[i][j][1:]].rect = cal_rect(1, i+1, j+1)
+                        self.screen.blit(self.P[self.ar[i][j][1:]].surf, cal_rect(1, i+1, j+1))
                     else:
-                        if pos != () and i == pos[1][0]-1 and j == pos[1][1]-1:
-                            pygame.draw.rect(
-                                    self.screen, RED_P,
-                                    (PIECE_SIZE*(j+1), PIECE_SIZE*(i+1), PIECE_SIZE, PIECE_SIZE))
-                        self.P[self.ar[i][j]].rect = cal_rect(1, i+1,j+1)
-                        self.screen.blit(self.P[self.ar[i][j]].surf, cal_rect(1, i+1,j+1))
+                        self.P[self.ar[i][j]].rect = cal_rect(1, i+1, j+1)
+                        self.screen.blit(self.P[self.ar[i][j]].surf, cal_rect(1, i+1, j+1))
 
     def is_prevent_check(self, ar, a, b, c, d, m):
         type = ar[a][b][0]

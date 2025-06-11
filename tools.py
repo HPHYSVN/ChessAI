@@ -4,12 +4,20 @@ from define import *
 
 def cal_rect(bool, rect0, rect1):
     if bool:
-        return (rect1 * PIECE_SIZE, rect0 * PIECE_SIZE, )
+        return (rect1 * PIECE_SIZE, rect0 * PIECE_SIZE)
     else:
-        return (rect1 * PIECE_SIZE + PIECE_SIZE//2, rect0 * PIECE_SIZE + PIECE_SIZE//2, )
+        return (rect1 * PIECE_SIZE + PIECE_SIZE//2, rect0 * PIECE_SIZE + PIECE_SIZE//2)
 
 def rev_rect(pos):
-    return (pos[1] // PIECE_SIZE, pos[0] // PIECE_SIZE)
+    # Calculate the offset like in draw_board
+    offset_x = (SCREEN_SIZE - (10 * PIECE_SIZE)) // 2
+    offset_y = (SCREEN_SIZE - (10 * PIECE_SIZE)) // 2
+    
+    # Adjust click position by subtracting offset
+    adj_x = pos[0] - offset_x
+    adj_y = pos[1] - offset_y
+    
+    return (adj_y // PIECE_SIZE, adj_x // PIECE_SIZE)
 
 def eq(a, b):
     if a[0] == b[0] and a[1] == b[1]:
